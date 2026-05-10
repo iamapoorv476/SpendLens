@@ -63,3 +63,31 @@
 - Reach out to additional users for interviews.
 - Finalize the initial project architecture and folder structure.
 - Start building the application foundation and core audit flow.
+
+---
+
+## Day 4 — 2026-05-10
+
+**Hours worked:** 5
+
+**What I did:**
+- Finalized my first detailed user interview and documented the key insights from the conversation.
+- Finalized the overall project folder structure and architecture direction for the application.
+- Reached out to additional people for user interviews to gather more perspectives on AI tooling workflows and pricing behavior.
+- Implemented the initial `types.ts` file containing the core TypeScript models for the audit engine and recommendation system.
+- Added the first version of `pricing-data.ts` as the centralized pricing metadata source for supported AI tools and plans.
+
+**What I learned:**
+- Learned several nuanced insights from the first user interview, especially around “useful output per dollar” and workflow continuity.
+- Began understanding the economics and behavioral psychology behind AI tooling usage, including pricing predictability, workflow lock-in, and productivity tradeoffs.
+- Realized that building a strong audit engine requires much deeper operational reasoning than simply comparing subscription prices.
+- Started refining my understanding of how recommendation logic should balance cost optimization with real workflow value.
+
+**Blockers / what I'm stuck on:**
+- Still refining my understanding of vendor pricing models and feature differences to improve the accuracy and maintainability of `pricing-data.ts`.
+- Some pricing/features change frequently, making it difficult to decide how much detail should be included without introducing inaccurate assumptions.
+
+**Plan for tomorrow:**
+- Continue reaching out to more users for interviews.
+- Start implementing and refining the core logic inside the audit engine.
+- Begin testing recommendation scenarios and validating whether the logic feels operationally realistic and financially defensible.
