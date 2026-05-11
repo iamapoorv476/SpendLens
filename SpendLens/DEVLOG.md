@@ -91,3 +91,32 @@
 - Continue reaching out to more users for interviews.
 - Start implementing and refining the core logic inside the audit engine.
 - Begin testing recommendation scenarios and validating whether the logic feels operationally realistic and financially defensible.
+
+---
+
+## Day 5 — 2026-05-11
+
+**Hours worked:** 7
+
+**What I did:**
+- Refined the audit engine logic by running multiple test scenarios and improving recommendation behavior based on edge cases and operational realism.
+- Added and finalized automated audit-engine tests using Vitest.
+- Implemented CI workflow setup to automatically run linting and tests on pushes to the repository.
+- Debugged failing CI and lint-related issues during workflow setup.
+- Continued improving recommendation quality by refining downgrade logic, overlap detection, and workflow-aware safeguards.
+- Started building the frontend UI, including the multi-step audit form structure and initial form components.
+
+**What I learned:**
+- Learned how subtle recommendation assumptions can significantly affect trustworthiness and operational realism inside an audit engine.
+- Improved my understanding of deterministic recommendation systems and how contextual inputs like compliance requirements, usage intensity, and limit exhaustion affect financial recommendations.
+- Learned more about CI workflows, automated testing discipline, and debugging test/lint failures in a real development workflow.
+- Repeatedly challenged AI-generated suggestions to validate whether the logic and architecture decisions were operationally defensible rather than blindly accepting generated output.
+
+**Blockers / what I'm stuck on:**
+- Encountered lint and CI-related issues while configuring the GitHub Actions workflow.
+- Refining audit recommendations still requires careful prompt engineering and iterative reasoning to avoid unrealistic cost-cutting suggestions.
+
+**Plan for tomorrow:**
+- Continue building and polishing the frontend UI.
+- Integrate the database layer and persistence logic.
+- Begin deployment setup and production integration work.
