@@ -153,7 +153,7 @@ function evaluateTool(
   const downgradeRec = checkForDowngrade(tool, input.usageIntensity)
   if (downgradeRec) recommendations.push(downgradeRec)
 
-  const useCaseRec = checkUseCaseMismatch(tool, input.useCase)
+  const useCaseRec = checkUseCaseMismatch(tool, input.useCase,input.usageIntensity)
   if (useCaseRec) recommendations.push(useCaseRec)
 
   return recommendations
@@ -276,8 +276,11 @@ function checkForDowngrade(
 
 function checkUseCaseMismatch(
   tool: ToolEntry,
-  useCase: string
+  useCase: string,
+  usageIntensity: UsageIntensity 
 ): ToolRecommendation | null {
+
+  if (usageIntensity === "heavy") return null 
   // Gemini Ultra for non-data/video workflows
   if (tool.name === "Gemini" && tool.plan === "AI Ultra") {
     if (useCase !== "data" && useCase !== "mixed") {

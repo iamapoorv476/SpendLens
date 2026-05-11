@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "test:run": "npx tsx src/lib/test-run.ts",
-    "start": "next start",
-    "lint": "eslint"
+  "build": "next build",
+  "lint": "next lint",
+  "test": "vitest run",
+  "test:watch": "vitest",
+  "test:run": "npx tsx src/lib/test-run.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.105.4",
