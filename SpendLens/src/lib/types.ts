@@ -44,6 +44,7 @@ export type ToolRecommendation = {
     currentSpend: number
     recommendedAction: string 
     savingsType: SavingsType
+    confidence: "high" | "medium" | "low"
     monthlySavings: number
     annualSavings: number
     reason: string              
@@ -84,4 +85,14 @@ export type PublicAudit = {
   totalAnnualSavings: number
   recommendations: ToolRecommendation[]
   createdAt: string
+}
+
+// ─── Extended Input (includes nuance fields) ──────────────────────────────────
+
+export type UsageIntensity = "light" | "moderate" | "heavy"
+
+export type ExtendedUserInput = UserInput & {
+  hasHitLimits: Partial<Record<string, boolean>>  // toolName -> true if user hit limits
+  usageIntensity: UsageIntensity
+  hasComplianceRequirements: boolean
 }

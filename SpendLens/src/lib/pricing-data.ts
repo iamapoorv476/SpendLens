@@ -12,6 +12,7 @@ export type PlanInfo = {
   features: string[]        // key features for use-case matching
   useCases: string[]        // which use cases this plan suits
   predictable: boolean      // flat rate = true, credit-based = false
+  isDowngradeTarget?: boolean
 }
 
 export type ToolPricing = {
@@ -64,6 +65,7 @@ const cursorPricing: ToolPricing = {
       features: ["Pro features", "centralized billing", "RBAC", "SSO"],
       useCases: ["coding"],
       predictable: false,
+      isDowngradeTarget: false,
       idealMinSeats: 5, // below 5, individual Pro plans are cheaper
     },
     {
@@ -72,6 +74,7 @@ const cursorPricing: ToolPricing = {
       features: ["Teams features", "custom contracts", "advanced security"],
       useCases: ["coding"],
       predictable: true,
+      isDowngradeTarget: false
     },
   ],
 }
@@ -111,6 +114,7 @@ const copilotPricing: ToolPricing = {
       useCases: ["coding"],
       predictable: true,
       idealMinSeats: 5,
+      isDowngradeTarget: false
     },
     {
       name: "Enterprise",
@@ -119,6 +123,7 @@ const copilotPricing: ToolPricing = {
       useCases: ["coding"],
       predictable: true,
       idealMinSeats: 20,
+      isDowngradeTarget: false
     },
   ],
 }
@@ -168,6 +173,7 @@ const claudePricing: ToolPricing = {
       predictable: true,
       idealMinSeats: 5,
       minSeats: 5,
+      isDowngradeTarget: false
     },
     {
       name: "Enterprise",
@@ -176,6 +182,7 @@ const claudePricing: ToolPricing = {
       useCases: ["writing", "research", "coding", "data", "mixed"],
       predictable: true,
       idealMinSeats: 20,
+      isDowngradeTarget: false
     },
     {
       name: "API direct",
@@ -208,6 +215,7 @@ const chatgptPricing: ToolPricing = {
       features: ["basic access", "includes ads"],
       useCases: ["writing", "research", "mixed"],
       predictable: true,
+      isDowngradeTarget: false,
     },
     {
       name: "Plus",
@@ -239,6 +247,7 @@ const chatgptPricing: ToolPricing = {
       predictable: true,
       idealMinSeats: 2,
       minSeats: 2,
+      isDowngradeTarget: false
     },
     {
       name: "Enterprise",
@@ -247,6 +256,7 @@ const chatgptPricing: ToolPricing = {
       useCases: ["writing", "research", "coding", "data", "mixed"],
       predictable: true,
       idealMinSeats: 150,
+      isDowngradeTarget: false
     },
     {
       name: "API direct",
@@ -386,6 +396,7 @@ const windsurfPricing: ToolPricing = {
       useCases: ["coding"],
       predictable: true,
       idealMinSeats: 5,
+      isDowngradeTarget: false
     },
     {
       name: "Enterprise",
@@ -394,6 +405,7 @@ const windsurfPricing: ToolPricing = {
       useCases: ["coding"],
       predictable: true,
       idealMinSeats: 20,
+      isDowngradeTarget: false
     },
   ],
 }
@@ -434,7 +446,8 @@ export function getCheaperPlan(
       (p) =>
         p.monthlyPrice > 0 &&
         p.monthlyPrice < currentPlan.monthlyPrice &&
-        p.name !== currentPlan.name
+        p.name !== currentPlan.name &&
+        p.isDowngradeTarget !== false  // ← use the flag, not string matching
     )
     .sort((a, b) => b.monthlyPrice - a.monthlyPrice)[0]
 }
