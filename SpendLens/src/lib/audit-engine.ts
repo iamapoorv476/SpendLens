@@ -1,6 +1,6 @@
 
-import { UserInput, AuditResult, ToolRecommendation, ToolEntry,ExtendedUserInput,UsageIntensity } from "./types"
-import { PRICING, getOverlappingTools, getCheaperPlan } from "./pricing-data"
+import {  AuditResult, ToolRecommendation, ToolEntry,ExtendedUserInput,UsageIntensity } from "./types"
+import { PRICING, getCheaperPlan } from "./pricing-data"
 
 // ─── Constants ────────────────────────────────────────────────────────────────
 
