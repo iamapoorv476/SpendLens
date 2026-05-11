@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-  "build": "next build",
-  "lint": "next lint",
-  "test": "vitest run",
-  "test:watch": "vitest",
-  "test:run": "npx tsx src/lib/test-run.ts"
+    "build": "next build",
+    "lint": "eslint src app --ext .ts,.tsx --max-warnings 0",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:run": "npx tsx src/lib/test-run.ts"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.105.4",
@@ -33,7 +33,7 @@
     "@types/react-dom": "^19",
     "@vitejs/plugin-react": "^6.0.1",
     "@vitest/coverage-v8": "^4.1.5",
-    "eslint": "^9",
+    "eslint": "^9.39.4",
     "eslint-config-next": "16.2.6",
     "jsdom": "^29.1.1",
     "tailwindcss": "^4",
