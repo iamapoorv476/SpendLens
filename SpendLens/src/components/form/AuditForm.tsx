@@ -82,7 +82,7 @@ export function AuditForm() {
 
   function updateTool(
     toolName: ToolName,
-    field: keyof ToolEntry,
+    field: string,
     value: string | number
   ) {
     setInput((prev) => ({

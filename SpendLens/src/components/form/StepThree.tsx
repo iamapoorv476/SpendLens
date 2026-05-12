@@ -9,7 +9,7 @@ type StepThreeProps = {
   hasHitLimits: Partial<Record<string, boolean>>
   onUpdateTool: (
     toolName: ToolName,
-    field: keyof ToolEntry,
+    field: string,
     value: string | number
   ) => void
   onToggleHitLimits: (toolName: string, value: boolean) => void
