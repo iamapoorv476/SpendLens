@@ -8,7 +8,7 @@ import { StepOne } from "./StepOne"
 import { StepTwo, PLANS } from "./StepTwo"
 import { StepThree } from "./StepThree"
 
-onst STORAGE_KEY = "spendlens_audit_input"
+const STORAGE_KEY = "spendlens_audit_input"
 
 const defaultInput: ExtendedUserInput = {
   teamSize: 1,
