@@ -1,12 +1,13 @@
+
 import { NextRequest, NextResponse } from "next/server"
 import { supabase } from "@/src/lib/supabase"
 
 export async function GET(
   req: NextRequest,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
-    const { id } = params
+    const { id } = await params  // ← await params
 
     if (!id) {
       return NextResponse.json(
@@ -28,7 +29,6 @@ export async function GET(
       )
     }
 
-    // Strip identifying details for public version
     const publicData = {
       id: data.id,
       createdAt: data.created_at,
