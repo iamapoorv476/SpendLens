@@ -101,19 +101,31 @@ export function AuditForm() {
   }
 
   async function handleSubmit() {
-    setIsSubmitting(true)
-    try {
-      const result = runAudit(input)
-      localStorage.setItem("spendlens_audit_result", JSON.stringify(result))
-      localStorage.setItem(
-        "spendlens_audit_input_final",
-        JSON.stringify(input)
-      )
+  setIsSubmitting(true)
+  try {
+    // Call API route instead of running engine client-side
+    const res = await fetch("/api/audit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(input),
+    })
+
+    const data = await res.json()
+
+    // Store result for results page
+    localStorage.setItem("spendlens_audit_result", JSON.stringify(data.result))
+    localStorage.setItem("spendlens_audit_input_final", JSON.stringify(input))
+
+    // Redirect to shareable URL if ID exists, otherwise results
+    if (data.id) {
+      router.push(`/results?id=${data.id}`)
+    } else {
       router.push("/results")
-    } catch {
-      setIsSubmitting(false)
     }
+  } catch {
+    setIsSubmitting(false)
   }
+}
 
   return (
     <div>

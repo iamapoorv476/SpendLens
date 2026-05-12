@@ -376,7 +376,9 @@ function evaluateOverlaps(input: ExtendedUserInput): ToolRecommendation[] {
       // High overlap = medium confidence suggestion
       // Lower overlap = low confidence, informational only
       const confidence: ConfidenceLevel =
-        profile.overlapPercent >= 80 ? "medium" : "low"
+        profile.overlapPercent >= 80 ? "high" 
+        : profile.overlapPercent >= 50 ? "medium" 
+        : "low"
 
       const actionVerb =
         profile.friction === "high"

@@ -9,6 +9,7 @@ type EmailFormState = {
   email: string
   company: string
   role: string
+  teamSize: string 
   submitted: boolean
   submitting: boolean
   error: string
@@ -41,7 +42,7 @@ function getSavingsTypeColor(type: string): string {
     case "downgrade": return "#ffaa00"
     case "optimize": return "#00ff88"
     case "switch": return "#4488ff"
-    default: return "#6a6a7f"
+    default: return "#9a9ab0"
   }
 }
 
@@ -49,8 +50,8 @@ function getConfidenceColor(confidence: string): string {
   switch (confidence) {
     case "high": return "#00ff88"
     case "medium": return "#ffaa00"
-    case "low": return "#6a6a7f"
-    default: return "#6a6a7f"
+    case "low": return "#9a9ab0"
+    default: return "#9a9ab0"
   }
 }
 
@@ -58,7 +59,10 @@ function getConfidenceColor(confidence: string): string {
 
 function ToolCard({ rec }: { rec: ToolRecommendation }) {
   const isOptimal = rec.isOptimal && rec.monthlySavings === 0
-  const isBillingWarning = rec.isOptimal && rec.savingsType === "optimize"
+  const isBillingWarning = 
+  rec.isOptimal && 
+  rec.savingsType === "optimize" && 
+  rec.reason.toLowerCase().includes("credit")
 
   return (
     <div
@@ -76,7 +80,7 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
               className="w-2 h-2 rounded-full flex-shrink-0"
               style={{
                 background: isOptimal && !isBillingWarning
-                  ? "#2a2a3f"
+                  ? "#4a4a6f"
                   : getSavingsTypeColor(rec.savingsType),
               }}
             />
@@ -85,7 +89,7 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
             </span>
             <span
               className="mono text-xs px-1.5 py-0.5"
-              style={{ color: "#4a4a5f", border: "1px solid #1c1c1f" }}
+              style={{ color: "#7a7a9f", border: "1px solid #1c1c1f" }}
             >
               {rec.currentPlan}
             </span>
@@ -94,7 +98,7 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
             className="mono text-xs"
             style={{
               color: isOptimal && !isBillingWarning
-                ? "#4a4a5f"
+                ? "#7a7a9f"
                 : getSavingsTypeColor(rec.savingsType),
             }}
           >
@@ -114,19 +118,19 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
               >
                 −{formatCurrency(rec.monthlySavings)}/mo
               </p>
-              <p className="mono text-xs" style={{ color: "#4a4a5f" }}>
+              <p className="mono text-xs" style={{ color: "#7a7a9f" }}>
                 −{formatCurrency(rec.annualSavings)}/yr
               </p>
             </>
           ) : (
-            <p className="mono text-xs" style={{ color: "#2a2a3f" }}>
+            <p className="mono text-xs" style={{ color: "#4a4a6f" }}>
               {isBillingWarning ? "⚠ variable billing" : "✓ optimal"}
             </p>
           )}
         </div>
       </div>
 
-      <p className="text-xs leading-relaxed" style={{ color: "#6a6a7f" }}>
+      <p className="text-xs leading-relaxed" style={{ color: "#9a9ab0" }}>
         {rec.reason}
       </p>
 
@@ -146,7 +150,7 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
           >
             {rec.confidence} confidence
           </span>
-          <span className="mono text-xs" style={{ color: "#2a2a3f" }}>
+          <span className="mono text-xs" style={{ color: "#4a4a6f" }}>
             {getSavingsTypeLabel(rec.savingsType)}
           </span>
         </div>
@@ -168,6 +172,7 @@ function EmailCapture({
   const [form, setForm] = useState<EmailFormState>({
     email: "",
     company: "",
+    teamSize: "",
     role: "",
     submitted: false,
     submitting: false,
@@ -189,6 +194,7 @@ function EmailCapture({
           email: form.email,
           company: form.company,
           role: form.role,
+          teamSize: form.teamSize ? parseInt(form.teamSize) : undefined,
           totalMonthlySavings: result.totalMonthlySavings,
           highSavings: result.highSavings,
         }),
@@ -216,7 +222,7 @@ function EmailCapture({
         <p style={{ color: "#00ff88" }} className="mono text-sm">
           ✓ Report sent
         </p>
-        <p className="text-xs" style={{ color: "#4a4a5f" }}>
+        <p className="text-xs" style={{ color: "#7a7a9f" }}>
           Check your inbox. We will follow up if significant savings apply.
         </p>
       </div>
@@ -232,7 +238,7 @@ function EmailCapture({
         <p className="text-sm font-semibold mb-1" style={{ color: "#d0d0d8" }}>
           Get this report by email
         </p>
-        <p className="text-xs" style={{ color: "#4a4a5f" }}>
+        <p className="text-xs" style={{ color: "#7a7a9f" }}>
           We will send a full breakdown and flag if Credex credits apply
           to your stack.
         </p>
@@ -304,6 +310,23 @@ function EmailCapture({
             onBlur={(e) => (e.target.style.borderColor = "#1c1c1f")}
           />
         </div>
+        <input
+          type="number"
+          placeholder="Team size (optional)"
+          value={form.teamSize}
+          onChange={(e) =>
+            setForm((prev) => ({ ...prev, teamSize: e.target.value }))
+          }
+           className="w-full px-3 py-2.5 text-sm mono"
+          style={{
+            background: "#111114",
+            border: "1px solid #1c1c1f",
+            color: "#d0d0d8",
+            outline: "none",
+          }}
+          onFocus={(e) => (e.target.style.borderColor = "#00ff88")}
+          onBlur={(e) => (e.target.style.borderColor = "#1c1c1f")}
+        />
       </div>
 
       {form.error && (
@@ -325,7 +348,7 @@ function EmailCapture({
         {form.submitting ? "SENDING..." : "GET FULL REPORT →"}
       </button>
 
-      <p className="mono text-xs text-center" style={{ color: "#2a2a3f" }}>
+      <p className="mono text-xs text-center" style={{ color: "#4a4a6f" }}>
         No spam. Unsubscribe any time.
       </p>
     </div>
@@ -365,7 +388,7 @@ export default function ResultsPage() {
         className="min-h-screen flex items-center justify-center"
         style={{ background: "#0c0c0e" }}
       >
-        <p className="mono text-xs" style={{ color: "#4a4a5f" }}>
+        <p className="mono text-xs" style={{ color: "#7a7a9f" }}>
           Loading audit...
         </p>
       </main>
@@ -396,15 +419,15 @@ export default function ResultsPage() {
           </span>
         </Link>
         <div className="flex items-center gap-4">
-          <span className="mono text-xs" style={{ color: "#2a2a3f" }}>
+          <span className="mono text-xs" style={{ color: "#4a4a6f" }}>
             audit complete
           </span>
           <Link href="/audit">
             <button
               className="mono text-xs px-4 py-2"
               style={{
-                border: "1px solid #2a2a2f",
-                color: "#4a4a5f",
+                border: "1px solid #7a7a9f",
+                color: "#7a7a9f",
                 background: "transparent",
               }}
             >
@@ -428,14 +451,14 @@ export default function ResultsPage() {
             <div className="space-y-2">
               <p
                 className="mono text-xs tracking-widest"
-                style={{ color: "#4a4a5f" }}
+                style={{ color: "#7a7a9f" }}
               >
                 AUDIT COMPLETE
               </p>
               <h1 className="text-3xl font-bold" style={{ color: "#d0d0d8" }}>
                 You are spending well.
               </h1>
-              <p className="text-sm" style={{ color: "#4a4a5f" }}>
+              <p className="text-sm" style={{ color: "#7a7a9f" }}>
                 No significant optimizations found for your current stack
                 and usage profile. We will flag opportunities as pricing
                 changes.
@@ -445,13 +468,13 @@ export default function ResultsPage() {
             <div className="space-y-4">
               <p
                 className="mono text-xs tracking-widest"
-                style={{ color: "#4a4a5f" }}
+                style={{ color: "#7a7a9f" }}
               >
                 AUDIT COMPLETE · {result.recommendations.length} tools reviewed
               </p>
               <div className="flex items-end gap-6 flex-wrap">
                 <div>
-                  <p className="text-sm mb-1" style={{ color: "#4a4a5f" }}>
+                  <p className="text-sm mb-1" style={{ color: "#7a7a9f" }}>
                     Potential monthly saving
                   </p>
                   <p
@@ -468,12 +491,12 @@ export default function ResultsPage() {
                   className="pb-2"
                   style={{ borderLeft: "1px solid #1c1c1f", paddingLeft: "1.5rem" }}
                 >
-                  <p className="text-sm mb-1" style={{ color: "#4a4a5f" }}>
+                  <p className="text-sm mb-1" style={{ color: "#7a7a9f" }}>
                     Per year
                   </p>
                   <p
                     className="mono text-2xl font-medium"
-                    style={{ color: "#6a6a7f" }}
+                    style={{ color: "#9a9ab0" }}
                   >
                     {formatCurrency(result.totalAnnualSavings)}
                   </p>
@@ -481,7 +504,7 @@ export default function ResultsPage() {
                 </div>
 
               {/* Context line */}
-              <p className="text-xs" style={{ color: "#4a4a5f" }}>
+              <p className="text-xs" style={{ color: "#7a7a9f" }}>
                 Based on {input.teamSize} person team ·{" "}
                 {input.useCase} use case · {input.usageIntensity} usage
               </p>
@@ -502,7 +525,7 @@ export default function ResultsPage() {
               <p className="text-sm font-semibold" style={{ color: "#d0d0d8" }}>
                 Capture more of this saving with Credex
               </p>
-              <p className="text-xs" style={{ color: "#4a4a5f" }}>
+              <p className="text-xs" style={{ color: "#7a7a9f" }}>
                 Credex sources discounted AI infrastructure credits from
                 companies that overforecast. Your stack qualifies for
                 significant savings beyond plan optimization.
@@ -527,7 +550,7 @@ export default function ResultsPage() {
         <div className="space-y-3">
           <p
             className="mono text-xs tracking-widest"
-            style={{ color: "#2a2a3f" }}
+            style={{ color: "#4a4a6f" }}
           >
             PER TOOL BREAKDOWN
           </p>
@@ -546,7 +569,7 @@ export default function ResultsPage() {
                 border: "1px solid #1c1c1f",
               }}
             >
-              <p className="mono text-xs" style={{ color: "#2a2a3f" }}>
+              <p className="mono text-xs" style={{ color: "#4a4a6f" }}>
                 ✓ {optimalRecs.map((r) => r.toolName).join(", ")} —
                 no changes needed
               </p>
@@ -564,15 +587,16 @@ export default function ResultsPage() {
         >
           <p
             className="mono text-xs tracking-widest"
-            style={{ color: "#2a2a3f" }}
+            style={{ color: "#4a4a6f" }}
           >
             AUDIT SUMMARY
           </p>
-          <p className="text-sm leading-relaxed" style={{ color: "#6a6a7f" }}>
-            {result.isAlreadyOptimal
-              ? `Your ${input.tools.length}-tool stack appears well-matched to your team of ${input.teamSize} for ${input.useCase} workflows. No significant plan mismatches, redundant tools, or seat waste detected under your current usage profile.`
-              : `Your ${input.tools.length}-tool stack has ${actionableRecs.filter(r => r.monthlySavings > 0).length} optimization opportunity${actionableRecs.filter(r => r.monthlySavings > 0).length !== 1 ? "ies" : "y"} totalling ${formatCurrency(result.totalMonthlySavings)}/month. The recommendations above are based on your team size of ${input.teamSize}, ${input.useCase} workflows, and ${input.usageIntensity} usage intensity. Compliance requirements and usage limits have been factored in.`
-            }
+          <p className="text-sm leading-relaxed" style={{ color: "#9a9ab0" }}>
+            {result.summary || (
+              result.isAlreadyOptimal
+                ? `Your ${input.tools.length}-tool stack appears well-matched to your team of ${input.teamSize} for ${input.useCase} workflows.`
+                : `Your ${input.tools.length}-tool stack has optimization opportunities totalling $${result.totalMonthlySavings}/month based on your team size and usage profile.`
+            )}
           </p>
         </div>
         <EmailCapture
@@ -592,7 +616,7 @@ export default function ResultsPage() {
             <p className="text-sm font-medium" style={{ color: "#d0d0d8" }}>
               Your stack looks efficient
             </p>
-            <p className="text-xs" style={{ color: "#4a4a5f" }}>
+            <p className="text-xs" style={{ color: "#7a7a9f" }}>
               We found limited optimization opportunity right now. Enter
               your email above and we will notify you when pricing changes
               or new alternatives apply to your stack.
@@ -607,7 +631,7 @@ export default function ResultsPage() {
         >
           <p
             className="mono text-xs tracking-widest"
-            style={{ color: "#2a2a3f" }}
+            style={{ color: "#4a4a6f" }}
           >
             SHARE THIS AUDIT
           </p>
@@ -619,7 +643,7 @@ export default function ResultsPage() {
               style={{
                 background: "#111114",
                 border: "1px solid #1c1c1f",
-                color: "#4a4a5f",
+                color: "#7a7a9f",
                 outline: "none",
               }}
             />
@@ -629,8 +653,8 @@ export default function ResultsPage() {
               }}
               className="mono text-xs px-4 py-2 flex-shrink-0"
               style={{
-                border: "1px solid #2a2a3f",
-                color: "#4a4a5f",
+                border: "1px solid #4a4a6f",
+                color: "#7a7a9f",
                 background: "transparent",
               }}
             >
@@ -646,8 +670,8 @@ export default function ResultsPage() {
             <button
               className="mono text-xs px-6 py-3"
               style={{
-                border: "1px solid #2a2a3f",
-                color: "#4a4a5f",
+                border: "1px solid #4a4a6f",
+                color: "#7a7a9f",
                 background: "transparent",
               }}
             >
