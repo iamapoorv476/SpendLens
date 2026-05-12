@@ -1,7 +1,7 @@
 
 "use client"
 
-import { ToolEntry, ToolName, ExtendedUserInput } from "@/lib/types"
+import { ToolEntry, ToolName } from "@/src/lib/types"
 import { PLANS } from "./StepTwo"
 
 type StepThreeProps = {
