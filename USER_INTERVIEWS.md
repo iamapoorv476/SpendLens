@@ -96,62 +96,54 @@ It also reinforced the importance of:
 - and respecting operational preferences instead of only minimizing spend.
 
 
-## Interview 3 — Hybrid AI Workflow User Optimizing Around Cost and Model Specialization
+## Interview 3 — Startup Engineer Using Claude for High-Context Development Workflows
 
-**Name:** Theio666  
-**Role:** Independent developer / heavy AI tooling user  
-**Company Stage:** Solo / individual workflow  
-**Platform:** Reddit async conversation  
-**Duration:** ~10–15 minute async discussion
+**Name:** Naval Kishor  
+**Role:** Software Engineer  
+**Company Stage:** Mid-sized startup  
+**Company:** Anonymous (requested privacy)  
+**Platform:** WhatsApp conversation  
+**Duration:** ~10 minutes
 
 ### Direct Quotes
 
-> “I mostly use cursor with driving it by Minimax M2.1 (their coding plan), leaving hardest tasks to codex.”
+> “Claude sonnet 4.6 for normal coding tasks with skills + for docs claude opus 4.6.”
 
-> “30 opus prompts per week is just not enough for me.”
+> “Better because it has a good context holding up to 400k tokens.”
 
-> “Using just cursor is rough nowadays if you're coding anything, I burn through cursor plan in a few days if I'm starting using only it without relying on 3rd party providers/other coding agents.”
+> “Like we are able to do 5 day tasks in 1 day.”
 
-> “I dropped cursor a few months ago.”
+> “Yes there is some extra review / debugging overhead.”
 
-> “Been using mostly codex (swapped from plus to pro recently) + opencode.”
-
-> “So I use just 2 tools basically nowadays.”
+> “They can remove the co-pilot. And replace it with claude.”
 
 ---
 
 ### Most Surprising Thing They Said
 
-The most surprising insight was that the user did not optimize around one “best” AI coding tool. Instead, they intentionally routed different types of work across different providers:
-- Minimax for coding workflows,
-- Codex for harder reasoning tasks,
-- Kimi K2.6 for frontend adjustments.
+The most surprising insight was how strongly workflow value was tied to context-window capacity rather than just raw model intelligence. The engineer specifically highlighted long-context handling as the reason their team preferred Claude workflows.
 
-Another surprising detail was that even premium AI subscriptions were not solving the core operational problem because usage limits were still being exhausted within days during heavier development periods.
+Another surprising point was the scale of perceived productivity improvement (“5 day tasks in 1 day”) despite still acknowledging meaningful debugging and review overhead.
 
-The user also described gradually simplifying their stack over time after experimenting with many tools, which contradicted my earlier assumption that advanced users naturally continue expanding subscriptions indefinitely.
+This contradiction reinforced that teams may still consider AI workflows highly valuable even when outputs are not fully reliable.
 
 ---
 
 ### What It Changed About My Design
 
-This conversation changed how I thought about AI tool overlap detection inside SpendLens.
+This conversation reinforced that AI-tool evaluation is not purely about subscription pricing. Teams are often optimizing around:
+- context retention,
+- implementation speed,
+- workflow continuity,
+- and reduced engineering turnaround time.
 
-Initially, my audit logic treated overlapping subscriptions aggressively and leaned toward consolidation recommendations whenever two tools appeared to solve similar problems.
+Initially, my audit engine focused heavily on overlap detection and pricing optimization.
 
-After this conversation, I realized that advanced users often intentionally maintain multiple tools because:
-- different models perform better on different workflow phases,
-- pricing structures vary dramatically,
-- reasoning quality and implementation quality are not always equal,
-- and operational sustainability matters more than theoretical capability.
+After this discussion, I became more careful about recommending tool consolidation when a tool provides operational advantages that are difficult to quantify directly through pricing alone.
 
-Because of this, I refined the audit logic to:
-- avoid naive “replace Tool A with Tool B” recommendations,
-- consider workflow specialization,
-- respect heavy-user constraints,
-- and account for users who intentionally distribute workloads to avoid exhausting plans too quickly.
+It also strengthened my decision to include:
+- usage intensity,
+- heavy-user protections,
+- and workflow-aware recommendation logic
 
-This directly influenced additions like:
-- usageIntensity,
-- hasHitLimits,
-- and more context-aware recommendation rules inside the audit engine.
+inside the audit engine instead of relying on simplistic cost-cutting rules.
