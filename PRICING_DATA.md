@@ -34,8 +34,7 @@ Note: GitHub Copilot transitions to usage-based billing (GitHub AI Credits) on J
 
 - Free: $0/month — https://anthropic.com/pricing — verified 2026-05-09
 - Pro: $20/user/month ($17/month billed annually) — https://anthropic.com/pricing — verified 2026-05-09
-- Max 5x: $100/user/month — https://anthropic.com/pricing — verified 2026-05-09
-- Max 20x: $200/user/month — https://anthropic.com/pricing — verified 2026-05-09
+- Max: $100/user/month — https://anthropic.com/pricing — verified 2026-05-09
 - Team: custom per seat, minimum 5 members — https://anthropic.com/pricing — verified 2026-05-09
 - Enterprise: custom pricing, contact sales — https://anthropic.com/pricing — verified 2026-05-09
 
@@ -43,7 +42,7 @@ Note: GitHub Copilot transitions to usage-based billing (GitHub AI Credits) on J
 
 - Claude Haiku 4.5: $1.00 input / $5.00 output — https://anthropic.com/pricing — verified 2026-05-09
 - Claude Sonnet 4.6: $3.00 input / $15.00 output — https://anthropic.com/pricing — verified 2026-05-09
-- Claude Opus 4.6: $5.00 input / $25.00 output — https://anthropic.com/pricing — verified 2026-05-09
+- Claude Opus 4.7: $5.00 input / $25.00 output — https://anthropic.com/pricing — verified 2026-05-09
 
 Note: Batch API gives 50% discount across all models. Prompt caching reduces cached input cost by up to 90%. Source: https://anthropic.com/pricing — verified 2026-05-09
 
@@ -51,12 +50,11 @@ Note: Batch API gives 50% discount across all models. Prompt caching reduces cac
 
 ## ChatGPT (OpenAI) — Subscription
 
-- Free: $0/month — https://openai.com/business/chatgpt-pricing/ — verified 2026-05-09
-- Plus: $20/user/month — https://openai.com/business/chatgpt-pricing/ — verified 2026-05-09
-- Pro 5x: $100/user/month — https://openai.com/business/chatgpt-pricing/ — verified 2026-05-09
-- Pro 20x: $200/user/month — https://openai.com/business/chatgpt-pricing/ — verified 2026-05-09
-- Business: $20/user/month annual / $25/user/month monthly, min 2 users — https://openai.com/business/chatgpt-pricing/ — verified 2026-05-09
-- Enterprise: custom pricing, contact sales — https://openai.com/business/chatgpt-pricing/ — verified 2026-05-09
+- Free: $0/month — https://chatgpt.com/pricing/ — verified 2026-05-09
+- Plus: $20/user/month — https://chatgpt.com/pricing/— verified 2026-05-09
+- Pro: $200/user/month - https://chatgpt.com/pricing/ — verified 2026-05-09
+- Business ChatGPT & Codex: ₹1,800/user/month in India region pricing (pricing varies by region) — https://chatgpt.com/pricing/ — verified 2026-05-09
+- Enterprise: custom pricing, contact sales — https://chatgpt.com/pricing/ — verified 2026-05-09
 
 ## OpenAI API — per million tokens
 
@@ -88,6 +86,7 @@ Note: Prompts exceeding 200K tokens charged at ~2x rate. Batch API gives 50% dis
 ## Windsurf
 
 - Free: $0/month — https://windsurf.com/pricing — verified 2026-05-09
-- Pro: $15/user/month — https://windsurf.com/pricing — verified 2026-05-09
-- Teams: $35/user/month — https://windsurf.com/pricing — verified 2026-05-09
+- Pro: $20/user/month — https://windsurf.com/pricing — verified 2026-05-09
+- Max- $200/month -https://windsurf.com/pricing — verified 2026-05-09
+- Teams: $40/user/month — https://windsurf.com/pricing — verified 2026-05-09
 - Enterprise: custom pricing, contact sales — https://windsurf.com/pricing — verified 2026-05-09

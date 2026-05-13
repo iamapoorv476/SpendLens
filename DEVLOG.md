@@ -150,3 +150,32 @@
 - Complete remaining project documentation.
 - Finalise audit-sharing flow and polish frontend inconsistencies.
 - Continue gathering user interview insights for improving recommendation quality.
+
+---
+
+## Day 7 — 2026-05-13
+
+**Hours worked:** 7
+
+### What I did
+- Deployed the application on Vercel.
+- Ran Lighthouse analysis on the deployed build and achieved:
+  - Performance ≥ 95
+  - Accessibility and best-practice improvements through UI refinements.
+- Conducted two additional real-world user interviews focused on AI tooling workflows and pricing behavior.
+- Completed the remaining documentation files including GTM, Metrics, Economics, and interview analysis.
+- Refined deployment configuration, environment variables, and production behavior after testing the live application.
+
+### What I learned
+- Improved my understanding of deployment workflows and production debugging while fixing deployment-related issues.
+- Gained more confidence handling real-world integration problems instead of only local development issues.
+- Researched AI tooling economics and developer workflow behavior more deeply to improve the quality and realism of the documentation.
+- Learned how strongly operational workflows influence AI-tool purchasing decisions beyond simple pricing comparisons.
+
+### Blockers / what I'm stuck on
+- Getting responses for user interviews became increasingly difficult because most conversations required multiple follow-ups.
+- Faced several syntax, typing, and deployment-related issues while moving from local development to production deployment.
+- Had to repeatedly debug environment-variable and API integration issues during deployment.
+
+### Plan for tomorrow
+- Assignment completed.
