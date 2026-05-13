@@ -14,9 +14,9 @@ credits.
 ## Screenshots
 
 > Add 3 screenshots here before submitting:
-> 1. Landing page hero
-> 2. Audit form Step 3 (spend details)
-> 3. Results page with savings hero and tool cards
+> ![Landing Page](/SpendLens/public/screenshots/screenshot-landing.png)
+> ![Audit Form](/SpendLens/public/screenshots/screenshot-form.png)
+> ![Results Page](/SpendLens/public/screenshots/screenshot-results.png)
 >
 > To take screenshots: open the live URL, press F12, toggle device toolbar, 
 > select mobile view, screenshot each page.
