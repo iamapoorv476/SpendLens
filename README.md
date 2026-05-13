@@ -7,8 +7,7 @@ what to switch or downgrade, and your total potential monthly and annual savings
 Built as a lead-generation tool for Credex, which sells discounted AI infrastructure 
 credits.
 
-**Live URL:** https://spend-lens-8khs.vercel.app
-
+**Live URL:** https://spend-lens-jsgo.vercel.app/
 ---
 
 ## Screenshots
