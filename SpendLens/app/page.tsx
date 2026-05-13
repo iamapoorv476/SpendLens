@@ -25,18 +25,19 @@ export default function HomePage() {
           </span>
         </div>
         <div className="flex items-center gap-6">
-          <span className="mono text-xs" style={{ color: "#7a7a9f" }}>
+          <span className="mono text-xs" style={{ color: "#a0a0b8" }}>
             pricing verified May 2026
           </span>
           <Link href="/audit">
             <button
               aria-label="Start free audit"
-              className="mono text-xs px-4 py-2 transition-all"
+              className="mono text-xs px-4 transition-all"
               style={{
                 border: "1px solid #6a6a8f",
-                color: "#9a9ab0",
+                color: "#a0a0b8",
                 background: "transparent",
                 minHeight: "44px",
+                minWidth: "44px",
               }}
             >
               START AUDIT →
@@ -56,7 +57,7 @@ export default function HomePage() {
               style={{ border: "1px solid #2a2a3f", background: "#111114" }}
             >
               <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#00ff88" }} />
-              <span className="mono text-xs tracking-widest" style={{ color: "#9a9ab0" }}>
+              <span className="mono text-xs tracking-widest" style={{ color: "#a0a0b8" }}>
                 DETERMINISTIC AUDIT ENGINE
               </span>
             </div>
@@ -72,10 +73,7 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <p
-              className="text-base leading-relaxed mb-8 max-w-md"
-              style={{ color: "#9a9ab0" }}
-            >
+            <p className="text-base leading-relaxed mb-8 max-w-md" style={{ color: "#a0a0b8" }}>
               SpendLens evaluates your AI subscriptions against current
               vendor pricing, your team size, usage intensity, and workflow
               type — then generates recommendations a finance team would
@@ -90,12 +88,13 @@ export default function HomePage() {
               ].map((signal) => (
                 <div key={signal} className="flex items-center gap-3">
                   <span style={{ color: "#00ff88" }} className="text-xs">✓</span>
-                  <span className="text-sm" style={{ color: "#9a9ab0" }}>{signal}</span>
+                  <span className="text-sm" style={{ color: "#a0a0b8" }}>{signal}</span>
                 </div>
               ))}
             </div>
 
             <div className="flex items-center gap-5">
+              <div style={{ minHeight: "44px", display: "inline-flex", alignItems: "center" }}>
               <Link href="/audit">
                 <button
                   aria-label="Audit my AI tool stack"
@@ -105,12 +104,16 @@ export default function HomePage() {
                     color: "#0c0c0e",
                     border: "none",
                     minHeight: "44px",
+                    minWidth: "44px",
+                    display: "inline-flex",
+                    alignItems: "center",
                   }}
                 >
                   AUDIT MY STACK →
                 </button>
               </Link>
-              <span className="mono text-xs" style={{ color: "#6a6a8f" }}>
+              </div>
+              <span className="mono text-xs" style={{ color: "#b0b0c8" }}>
                 no login · no email upfront
               </span>
             </div>
@@ -119,10 +122,10 @@ export default function HomePage() {
           {/* Right — audit preview */}
           <div className="space-y-2 pt-2">
             <div className="flex items-center justify-between mb-4">
-              <span className="mono text-xs tracking-widest" style={{ color: "#7a7a9f" }}>
+              <span className="mono text-xs tracking-widest" style={{ color: "#a0a0b8" }}>
                 EXAMPLE AUDIT OUTPUT
               </span>
-              <span className="mono text-xs" style={{ color: "#7a7a9f" }}>
+              <span className="mono text-xs" style={{ color: "#a0a0b8" }}>
                 3-person team · coding
               </span>
             </div>
@@ -155,15 +158,15 @@ export default function HomePage() {
                   −$30/mo
                 </span>
               </div>
-              <p className="text-xs leading-relaxed" style={{ color: "#9a9ab0" }}>
+              <p className="text-xs leading-relaxed" style={{ color: "#a0a0b8" }}>
                 Cursor and GitHub Copilot overlap in ~60% of use cases.
                 Copilot retains value for PR reviews and CI pipeline
                 contexts — if those workflows exist, this saving does not apply.
               </p>
               <div className="flex items-center gap-2 pt-1" style={{ borderTop: "1px solid #1a1a1d" }}>
-                <span className="mono text-xs" style={{ color: "#7a7a9f" }}>overlap detection</span>
+                <span className="mono text-xs" style={{ color: "#9a9ab0" }}>overlap detection</span>
                 <span style={{ color: "#2a2a3f" }}>·</span>
-                <span className="mono text-xs" style={{ color: "#7a7a9f" }}>switching friction: medium</span>
+                <span className="mono text-xs" style={{ color: "#9a9ab0" }}>switching friction: medium</span>
               </div>
             </div>
 
@@ -195,16 +198,16 @@ export default function HomePage() {
                   −$40/mo
                 </span>
               </div>
-              <p className="text-xs leading-relaxed" style={{ color: "#9a9ab0" }}>
+              <p className="text-xs leading-relaxed" style={{ color: "#a0a0b8" }}>
                 Teams plan is structured for 5+ users. At 3 seats,
                 individual Pro at $20/seat saves $40/mo with identical
                 capability — unless SSO or centralised billing are
                 contractually required.
               </p>
               <div className="flex items-center gap-2 pt-1" style={{ borderTop: "1px solid #1a1a1d" }}>
-                <span className="mono text-xs" style={{ color: "#7a7a9f" }}>seat waste</span>
+                <span className="mono text-xs" style={{ color: "#9a9ab0" }}>seat waste</span>
                 <span style={{ color: "#2a2a3f" }}>·</span>
-                <span className="mono text-xs" style={{ color: "#7a7a9f" }}>math-based · no assumptions</span>
+                <span className="mono text-xs" style={{ color: "#9a9ab0" }}>math-based · no assumptions</span>
               </div>
             </div>
 
@@ -213,7 +216,7 @@ export default function HomePage() {
               className="flex items-center justify-between px-4 py-3"
               style={{ background: "#0f0f12", border: "1px solid #2a2a3f" }}
             >
-              <span className="mono text-xs" style={{ color: "#9a9ab0" }}>
+              <span className="mono text-xs" style={{ color: "#a0a0b8" }}>
                 potential monthly saving
               </span>
               <div className="flex items-baseline gap-2">
@@ -223,11 +226,11 @@ export default function HomePage() {
                 >
                   $70/mo
                 </span>
-                <span className="mono text-xs" style={{ color: "#7a7a9f" }}>$840/yr</span>
+                <span className="mono text-xs" style={{ color: "#9a9ab0" }}>$840/yr</span>
               </div>
             </div>
 
-            <p className="mono text-xs text-right pt-1" style={{ color: "#4a4a6f" }}>
+            <p className="mono text-xs text-right pt-1" style={{ color: "#7a7a9f" }}>
               actual output format · your numbers will differ
             </p>
           </div>
@@ -251,7 +254,7 @@ export default function HomePage() {
               <span className="mono text-sm font-medium" style={{ color: "#00ff88" }}>
                 {stat.value}
               </span>
-              <span className="mono text-xs" style={{ color: "#7a7a9f" }}>
+              <span className="mono text-xs" style={{ color: "#a0a0b8" }}>
                 {stat.label}
               </span>
             </div>
@@ -261,9 +264,10 @@ export default function HomePage() {
 
       {/* How it works */}
       <section className="max-w-6xl mx-auto px-8 py-20">
-        <p className="mono text-xs tracking-widest mb-12" style={{ color: "#7a7a9f" }}>
+        {/* h2 fixes heading order — h3 inside needs h2 parent */}
+        <h2 className="mono text-xs tracking-widest mb-12" style={{ color: "#a0a0b8" }}>
           HOW THE AUDIT WORKS
-        </p>
+        </h2>
         <div className="grid md:grid-cols-3 gap-px" style={{ background: "#2a2a3f" }}>
           {[
             {
@@ -283,13 +287,14 @@ export default function HomePage() {
             },
           ].map((item) => (
             <div key={item.step} className="p-8" style={{ background: "#0c0c0e" }}>
-              <span className="mono text-3xl font-bold block mb-6" style={{ color: "#2a2a3f" }}>
+              {/* Fixed: was #2a2a3f now #4a4a6f for contrast */}
+              <span className="mono text-3xl font-bold block mb-6" style={{ color: "#6a6a8f" }}>
                 {item.step}
               </span>
               <h3 className="text-sm font-semibold mb-3" style={{ color: "#d0d0d4" }}>
                 {item.title}
               </h3>
-              <p className="text-sm leading-relaxed" style={{ color: "#9a9ab0" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "#a0a0b8" }}>
                 {item.desc}
               </p>
             </div>
@@ -299,9 +304,9 @@ export default function HomePage() {
 
       {/* Tools */}
       <section className="max-w-6xl mx-auto px-8 pb-20">
-        <p className="mono text-xs tracking-widest mb-6" style={{ color: "#7a7a9f" }}>
+        <h2 className="mono text-xs tracking-widest mb-6" style={{ color: "#a0a0b8" }}>
           TOOLS AUDITED
-        </p>
+        </h2>
         <div className="flex flex-wrap gap-2">
           {[
             "Cursor", "GitHub Copilot", "Claude", "ChatGPT",
@@ -310,13 +315,14 @@ export default function HomePage() {
             <span
               key={tool}
               className="mono text-xs px-3 py-1.5"
-              style={{ border: "1px solid #2a2a3f", color: "#9a9ab0", background: "#0f0f12" }}
+              style={{ border: "1px solid #2a2a3f", color: "#a0a0b8", background: "#0f0f12" }}
             >
               {tool}
             </span>
           ))}
         </div>
-        <p className="mono text-xs mt-4" style={{ color: "#4a4a6f" }}>
+        {/* Fixed: was #4a4a6f now #9a9ab0 */}
+        <p className="mono text-xs mt-4" style={{ color: "#b0b0c8" }}>
           pricing verified against official vendor pages · May 2026
         </p>
       </section>
@@ -328,7 +334,7 @@ export default function HomePage() {
             <h2 className="text-2xl font-bold mb-2" style={{ color: "#f0f0f2" }}>
               Run your audit.
             </h2>
-            <p className="text-sm" style={{ color: "#9a9ab0" }}>
+            <p className="text-sm" style={{ color: "#a0a0b8" }}>
               Free. No account. Email captured after you see results.
             </p>
           </div>
@@ -341,6 +347,9 @@ export default function HomePage() {
                 color: "#0c0c0e",
                 border: "none",
                 minHeight: "44px",
+                minWidth: "44px",
+                display: "inline-flex",
+                alignItems: "center",
               }}
             >
               START FREE AUDIT →
@@ -352,14 +361,20 @@ export default function HomePage() {
       {/* Footer */}
       <footer style={{ borderTop: "1px solid #2a2a3f" }} className="px-8 py-5">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <span className="mono text-xs" style={{ color: "#6a6a8f" }}>
+          <span className="mono text-xs" style={{ color: "#9a9ab0" }}>
             SPENDLENS · built for Credex
           </span>
+          {/* Fixed: was #6a6a8f now #9a9ab0, added minHeight for touch target */}
           <a
             href="https://credex.rocks"
             aria-label="Visit Credex website"
             className="mono text-xs transition-colors"
-            style={{ color: "#6a6a8f" }}
+            style={{
+              color: "#b0b0c8",
+              minHeight: "44px",
+              display: "inline-flex",
+              alignItems: "center",
+            }}
             target="_blank"
             rel="noopener noreferrer"
           >
