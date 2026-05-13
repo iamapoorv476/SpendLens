@@ -9,13 +9,11 @@ type EmailFormState = {
   email: string
   company: string
   role: string
-  teamSize: string 
+  teamSize: string
   submitted: boolean
   submitting: boolean
   error: string
 }
-
-// ─── Helpers ──────────────────────────────────────────────────────────────────
 
 function formatCurrency(amount: number): string {
   return new Intl.NumberFormat("en-US", {
@@ -55,14 +53,12 @@ function getConfidenceColor(confidence: string): string {
   }
 }
 
-// ─── Tool Card Component ──────────────────────────────────────────────────────
-
 function ToolCard({ rec }: { rec: ToolRecommendation }) {
   const isOptimal = rec.isOptimal && rec.monthlySavings === 0
-  const isBillingWarning = 
-  rec.isOptimal && 
-  rec.savingsType === "optimize" && 
-  rec.reason.toLowerCase().includes("credit")
+  const isBillingWarning =
+    rec.isOptimal &&
+    rec.savingsType === "optimize" &&
+    rec.reason.toLowerCase().includes("credit")
 
   return (
     <div
@@ -72,7 +68,6 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
         border: `1px solid ${isOptimal && !isBillingWarning ? "#1c1c1f" : "#222228"}`,
       }}
     >
-      {/* Header */}
       <div className="flex items-start justify-between gap-4">
         <div className="space-y-1.5">
           <div className="flex items-center gap-2 flex-wrap">
@@ -80,7 +75,7 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
               className="w-2 h-2 rounded-full flex-shrink-0"
               style={{
                 background: isOptimal && !isBillingWarning
-                  ? "#4a4a6f"
+                  ? "#6a6a8f"
                   : getSavingsTypeColor(rec.savingsType),
               }}
             />
@@ -89,7 +84,7 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
             </span>
             <span
               className="mono text-xs px-1.5 py-0.5"
-              style={{ color: "#7a7a9f", border: "1px solid #1c1c1f" }}
+              style={{ color: "#9a9ab0", border: "1px solid #2a2a3f" }}
             >
               {rec.currentPlan}
             </span>
@@ -98,7 +93,7 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
             className="mono text-xs"
             style={{
               color: isOptimal && !isBillingWarning
-                ? "#7a7a9f"
+                ? "#9a9ab0"
                 : getSavingsTypeColor(rec.savingsType),
             }}
           >
@@ -118,12 +113,12 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
               >
                 −{formatCurrency(rec.monthlySavings)}/mo
               </p>
-              <p className="mono text-xs" style={{ color: "#7a7a9f" }}>
+              <p className="mono text-xs" style={{ color: "#9a9ab0" }}>
                 −{formatCurrency(rec.annualSavings)}/yr
               </p>
             </>
           ) : (
-            <p className="mono text-xs" style={{ color: "#4a4a6f" }}>
+            <p className="mono text-xs" style={{ color: "#7a7a9f" }}>
               {isBillingWarning ? "⚠ variable billing" : "✓ optimal"}
             </p>
           )}
@@ -134,7 +129,6 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
         {rec.reason}
       </p>
 
-      {/* Metadata */}
       {!isOptimal && (
         <div
           className="flex items-center gap-3 pt-2 flex-wrap"
@@ -150,7 +144,7 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
           >
             {rec.confidence} confidence
           </span>
-          <span className="mono text-xs" style={{ color: "#4a4a6f" }}>
+          <span className="mono text-xs" style={{ color: "#7a7a9f" }}>
             {getSavingsTypeLabel(rec.savingsType)}
           </span>
         </div>
@@ -158,9 +152,6 @@ function ToolCard({ rec }: { rec: ToolRecommendation }) {
     </div>
   )
 }
-
-
-// ─── Email Capture Component ──────────────────────────────────────────────────
 
 function EmailCapture({
   result,
@@ -182,7 +173,7 @@ function EmailCapture({
 
   async function handleSubmit() {
     if (!form.email) return
-    if (honeypot) return // bot detected
+    if (honeypot) return
 
     setForm((prev) => ({ ...prev, submitting: true, error: "" }))
 
@@ -222,7 +213,7 @@ function EmailCapture({
         <p style={{ color: "#00ff88" }} className="mono text-sm">
           ✓ Report sent
         </p>
-        <p className="text-xs" style={{ color: "#7a7a9f" }}>
+        <p className="text-xs" style={{ color: "#9a9ab0" }}>
           Check your inbox. We will follow up if significant savings apply.
         </p>
       </div>
@@ -235,16 +226,16 @@ function EmailCapture({
       style={{ background: "#0f0f12", border: "1px solid #222228" }}
     >
       <div>
-        <p className="text-sm font-semibold mb-1" style={{ color: "#d0d0d8" }}>
+        <h2 className="text-sm font-semibold mb-1" style={{ color: "#d0d0d8" }}>
           Get this report by email
-        </p>
-        <p className="text-xs" style={{ color: "#7a7a9f" }}>
+        </h2>
+        <p className="text-xs" style={{ color: "#9a9ab0" }}>
           We will send a full breakdown and flag if Credex credits apply
           to your stack.
         </p>
       </div>
 
-      {/* Honeypot — hidden from real users */}
+      {/* Honeypot */}
       <input
         type="text"
         value={honeypot}
@@ -255,8 +246,9 @@ function EmailCapture({
       />
 
       <div className="space-y-3">
-        {/* Email */}
+        <label htmlFor="email" className="sr-only">Email address</label>
         <input
+          id="email"
           type="email"
           placeholder="your@email.com"
           value={form.email}
@@ -266,67 +258,84 @@ function EmailCapture({
           className="w-full px-3 py-2.5 text-sm mono"
           style={{
             background: "#111114",
-            border: "1px solid #1c1c1f",
+            border: "1px solid #2a2a3f",
             color: "#d0d0d8",
             outline: "none",
+            minHeight: "44px",
           }}
           onFocus={(e) => (e.target.style.borderColor = "#00ff88")}
-          onBlur={(e) => (e.target.style.borderColor = "#1c1c1f")}
+          onBlur={(e) => (e.target.style.borderColor = "#2a2a3f")}
         />
 
         <div className="grid grid-cols-2 gap-3">
+          <div>
+            <label htmlFor="company" className="sr-only">Company name</label>
+            <input
+              id="company"
+              type="text"
+              placeholder="Company (optional)"
+              value={form.company}
+              onChange={(e) =>
+                setForm((prev) => ({ ...prev, company: e.target.value }))
+              }
+              className="w-full px-3 py-2.5 text-sm"
+              style={{
+                background: "#111114",
+                border: "1px solid #2a2a3f",
+                color: "#d0d0d8",
+                outline: "none",
+                minHeight: "44px",
+              }}
+              onFocus={(e) => (e.target.style.borderColor = "#00ff88")}
+              onBlur={(e) => (e.target.style.borderColor = "#2a2a3f")}
+            />
+          </div>
+          <div>
+            <label htmlFor="role" className="sr-only">Your role</label>
+            <input
+              id="role"
+              type="text"
+              placeholder="Role (optional)"
+              value={form.role}
+              onChange={(e) =>
+                setForm((prev) => ({ ...prev, role: e.target.value }))
+              }
+              className="w-full px-3 py-2.5 text-sm"
+              style={{
+                background: "#111114",
+                border: "1px solid #2a2a3f",
+                color: "#d0d0d8",
+                outline: "none",
+                minHeight: "44px",
+              }}
+              onFocus={(e) => (e.target.style.borderColor = "#00ff88")}
+              onBlur={(e) => (e.target.style.borderColor = "#2a2a3f")}
+            />
+          </div>
+        </div>
+
+        <div>
+          <label htmlFor="teamSize" className="sr-only">Team size</label>
           <input
-            type="text"
-            placeholder="Company (optional)"
-            value={form.company}
+            id="teamSize"
+            type="number"
+            placeholder="Team size (optional)"
+            value={form.teamSize}
             onChange={(e) =>
-              setForm((prev) => ({ ...prev, company: e.target.value }))
+              setForm((prev) => ({ ...prev, teamSize: e.target.value }))
             }
-            className="w-full px-3 py-2.5 text-sm"
+            className="w-full px-3 py-2.5 text-sm mono"
             style={{
               background: "#111114",
-              border: "1px solid #1c1c1f",
+              border: "1px solid #2a2a3f",
               color: "#d0d0d8",
               outline: "none",
+              minHeight: "44px",
             }}
             onFocus={(e) => (e.target.style.borderColor = "#00ff88")}
-            onBlur={(e) => (e.target.style.borderColor = "#1c1c1f")}
-          />
-          <input
-            type="text"
-            placeholder="Role (optional)"
-            value={form.role}
-            onChange={(e) =>
-              setForm((prev) => ({ ...prev, role: e.target.value }))
-            }
-             className="w-full px-3 py-2.5 text-sm"
-            style={{
-              background: "#111114",
-              border: "1px solid #1c1c1f",
-              color: "#d0d0d8",
-              outline: "none",
-            }}
-            onFocus={(e) => (e.target.style.borderColor = "#00ff88")}
-            onBlur={(e) => (e.target.style.borderColor = "#1c1c1f")}
+            onBlur={(e) => (e.target.style.borderColor = "#2a2a3f")}
           />
         </div>
-        <input
-          type="number"
-          placeholder="Team size (optional)"
-          value={form.teamSize}
-          onChange={(e) =>
-            setForm((prev) => ({ ...prev, teamSize: e.target.value }))
-          }
-           className="w-full px-3 py-2.5 text-sm mono"
-          style={{
-            background: "#111114",
-            border: "1px solid #1c1c1f",
-            color: "#d0d0d8",
-            outline: "none",
-          }}
-          onFocus={(e) => (e.target.style.borderColor = "#00ff88")}
-          onBlur={(e) => (e.target.style.borderColor = "#1c1c1f")}
-        />
       </div>
 
       {form.error && (
@@ -338,24 +347,24 @@ function EmailCapture({
       <button
         onClick={handleSubmit}
         disabled={!form.email || form.submitting}
-        className="w-full py-3 mono text-xs font-medium tracking-widest transition-opacity disabled:opacity-30"
+        aria-label="Get full audit report by email"
+        className="w-full mono text-xs font-medium tracking-widest transition-opacity disabled:opacity-30"
         style={{
           background: "#00ff88",
           color: "#0c0c0e",
           border: "none",
+          minHeight: "44px",
         }}
       >
         {form.submitting ? "SENDING..." : "GET FULL REPORT →"}
       </button>
 
-      <p className="mono text-xs text-center" style={{ color: "#4a4a6f" }}>
+      <p className="mono text-xs text-center" style={{ color: "#9a9ab0" }}>
         No spam. Unsubscribe any time.
       </p>
     </div>
   )
 }
-
-// ─── Main Page ────────────────────────────────────────────────────────────────
 
 export default function ResultsPage() {
   const router = useRouter()
@@ -388,7 +397,7 @@ export default function ResultsPage() {
         className="min-h-screen flex items-center justify-center"
         style={{ background: "#0c0c0e" }}
       >
-        <p className="mono text-xs" style={{ color: "#7a7a9f" }}>
+        <p className="mono text-xs" style={{ color: "#9a9ab0" }}>
           Loading audit...
         </p>
       </main>
@@ -405,7 +414,6 @@ export default function ResultsPage() {
   return (
     <main className="min-h-screen" style={{ background: "#0c0c0e" }}>
 
-      {/* Nav */}
       <nav
         className="px-8 py-4 flex items-center justify-between"
         style={{ borderBottom: "1px solid #1c1c1f" }}
@@ -419,16 +427,18 @@ export default function ResultsPage() {
           </span>
         </Link>
         <div className="flex items-center gap-4">
-          <span className="mono text-xs" style={{ color: "#4a4a6f" }}>
+          <span className="mono text-xs" style={{ color: "#9a9ab0" }}>
             audit complete
           </span>
           <Link href="/audit">
             <button
+              aria-label="Start a new audit"
               className="mono text-xs px-4 py-2"
               style={{
                 border: "1px solid #7a7a9f",
-                color: "#7a7a9f",
+                color: "#9a9ab0",
                 background: "transparent",
+                minHeight: "44px",
               }}
             >
               NEW AUDIT
@@ -439,42 +449,32 @@ export default function ResultsPage() {
 
       <div className="max-w-3xl mx-auto px-8 py-12 space-y-8">
 
-        {/* ── Savings Hero ── */}
+        {/* Savings Hero */}
         <div
           className="p-8 space-y-4"
-          style={{
-            background: "#0f0f12",
-            border: "1px solid #222228",
-          }}
+          style={{ background: "#0f0f12", border: "1px solid #222228" }}
         >
-            {result.isAlreadyOptimal ? (
+          {result.isAlreadyOptimal ? (
             <div className="space-y-2">
-              <p
-                className="mono text-xs tracking-widest"
-                style={{ color: "#7a7a9f" }}
-              >
+              <p className="mono text-xs tracking-widest" style={{ color: "#9a9ab0" }}>
                 AUDIT COMPLETE
               </p>
               <h1 className="text-3xl font-bold" style={{ color: "#d0d0d8" }}>
                 You are spending well.
               </h1>
-              <p className="text-sm" style={{ color: "#7a7a9f" }}>
+              <p className="text-sm" style={{ color: "#9a9ab0" }}>
                 No significant optimizations found for your current stack
-                and usage profile. We will flag opportunities as pricing
-                changes.
+                and usage profile. We will flag opportunities as pricing changes.
               </p>
             </div>
           ) : (
             <div className="space-y-4">
-              <p
-                className="mono text-xs tracking-widest"
-                style={{ color: "#7a7a9f" }}
-              >
+              <p className="mono text-xs tracking-widest" style={{ color: "#9a9ab0" }}>
                 AUDIT COMPLETE · {result.recommendations.length} tools reviewed
               </p>
               <div className="flex items-end gap-6 flex-wrap">
                 <div>
-                  <p className="text-sm mb-1" style={{ color: "#7a7a9f" }}>
+                  <p className="text-sm mb-1" style={{ color: "#9a9ab0" }}>
                     Potential monthly saving
                   </p>
                   <p
@@ -491,20 +491,15 @@ export default function ResultsPage() {
                   className="pb-2"
                   style={{ borderLeft: "1px solid #1c1c1f", paddingLeft: "1.5rem" }}
                 >
-                  <p className="text-sm mb-1" style={{ color: "#7a7a9f" }}>
+                  <p className="text-sm mb-1" style={{ color: "#9a9ab0" }}>
                     Per year
                   </p>
-                  <p
-                    className="mono text-2xl font-medium"
-                    style={{ color: "#9a9ab0" }}
-                  >
+                  <p className="mono text-2xl font-medium" style={{ color: "#9a9ab0" }}>
                     {formatCurrency(result.totalAnnualSavings)}
                   </p>
                 </div>
-                </div>
-
-              {/* Context line */}
-              <p className="text-xs" style={{ color: "#7a7a9f" }}>
+              </div>
+              <p className="text-xs" style={{ color: "#9a9ab0" }}>
                 Based on {input.teamSize} person team ·{" "}
                 {input.useCase} use case · {input.usageIntensity} usage
               </p>
@@ -512,7 +507,7 @@ export default function ResultsPage() {
           )}
         </div>
 
-        {/* ── Credex CTA — high savings only ── */}
+        {/* Credex CTA */}
         {result.highSavings && (
           <div
             className="p-6 flex items-start justify-between gap-6"
@@ -525,7 +520,7 @@ export default function ResultsPage() {
               <p className="text-sm font-semibold" style={{ color: "#d0d0d8" }}>
                 Capture more of this saving with Credex
               </p>
-              <p className="text-xs" style={{ color: "#7a7a9f" }}>
+              <p className="text-xs" style={{ color: "#9a9ab0" }}>
                 Credex sources discounted AI infrastructure credits from
                 companies that overforecast. Your stack qualifies for
                 significant savings beyond plan optimization.
@@ -535,62 +530,54 @@ export default function ResultsPage() {
               href="https://credex.rocks"
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Book a Credex consultation"
               className="mono text-xs px-4 py-2 flex-shrink-0 transition-opacity hover:opacity-80"
               style={{
                 background: "#00ff88",
                 color: "#0c0c0e",
                 border: "none",
                 textDecoration: "none",
+                minHeight: "44px",
+                display: "inline-flex",
+                alignItems: "center",
               }}
             >
               BOOK A CALL →
             </a>
           </div>
         )}
-        <div className="space-y-3">
-          <p
-            className="mono text-xs tracking-widest"
-            style={{ color: "#4a4a6f" }}
-          >
-            PER TOOL BREAKDOWN
-          </p>
 
-          {/* Actionable recommendations first */}
+        {/* Per Tool Breakdown */}
+        <div className="space-y-3">
+          <h2 className="mono text-xs tracking-widest" style={{ color: "#9a9ab0" }}>
+            PER TOOL BREAKDOWN
+          </h2>
+
           {actionableRecs.map((rec) => (
             <ToolCard key={rec.toolName} rec={rec} />
           ))}
 
-          {/* Optimal tools collapsed */}
           {optimalRecs.length > 0 && (
             <div
               className="p-4"
-              style={{
-                background: "#0c0c0e",
-                border: "1px solid #1c1c1f",
-              }}
+              style={{ background: "#0c0c0e", border: "1px solid #1c1c1f" }}
             >
-              <p className="mono text-xs" style={{ color: "#4a4a6f" }}>
+              <p className="mono text-xs" style={{ color: "#9a9ab0" }}>
                 ✓ {optimalRecs.map((r) => r.toolName).join(", ")} —
                 no changes needed
               </p>
             </div>
           )}
-          </div>
+        </div>
 
-        {/* ── AI Summary placeholder ── */}
+        {/* AI Summary */}
         <div
           className="p-5 space-y-2"
-          style={{
-            background: "#0f0f12",
-            border: "1px solid #1c1c1f",
-          }}
+          style={{ background: "#0f0f12", border: "1px solid #1c1c1f" }}
         >
-          <p
-            className="mono text-xs tracking-widest"
-            style={{ color: "#4a4a6f" }}
-          >
+          <h2 className="mono text-xs tracking-widest" style={{ color: "#9a9ab0" }}>
             AUDIT SUMMARY
-          </p>
+          </h2>
           <p className="text-sm leading-relaxed" style={{ color: "#9a9ab0" }}>
             {result.summary || (
               result.isAlreadyOptimal
@@ -599,80 +586,82 @@ export default function ResultsPage() {
             )}
           </p>
         </div>
+
         <EmailCapture
           result={result}
           onSubmitted={() => setEmailSubmitted(true)}
         />
 
-        {/* ── Low savings notify me ── */}
+        {/* Low savings */}
         {result.lowSavings && !emailSubmitted && (
           <div
             className="p-5 space-y-2"
-            style={{
-              background: "#0f0f12",
-              border: "1px solid #1c1c1f",
-            }}
+            style={{ background: "#0f0f12", border: "1px solid #1c1c1f" }}
           >
             <p className="text-sm font-medium" style={{ color: "#d0d0d8" }}>
               Your stack looks efficient
             </p>
-            <p className="text-xs" style={{ color: "#7a7a9f" }}>
+            <p className="text-xs" style={{ color: "#9a9ab0" }}>
               We found limited optimization opportunity right now. Enter
               your email above and we will notify you when pricing changes
               or new alternatives apply to your stack.
             </p>
           </div>
-        )}<div
+        )}
+
+        {/* Share */}
+        <div
           className="p-5 space-y-3"
-          style={{
-            background: "#0f0f12",
-            border: "1px solid #1c1c1f",
-          }}
+          style={{ background: "#0f0f12", border: "1px solid #1c1c1f" }}
         >
-          <p
-            className="mono text-xs tracking-widest"
-            style={{ color: "#4a4a6f" }}
-          >
+          <h2 className="mono text-xs tracking-widest" style={{ color: "#9a9ab0" }}>
             SHARE THIS AUDIT
-          </p>
+          </h2>
           <div className="flex items-center gap-3">
+            <label htmlFor="shareUrl" className="sr-only">Share URL</label>
             <input
+              id="shareUrl"
               readOnly
               value={shareUrl}
               className="flex-1 px-3 py-2 mono text-xs"
               style={{
                 background: "#111114",
-                border: "1px solid #1c1c1f",
-                color: "#7a7a9f",
+                border: "1px solid #2a2a3f",
+                color: "#9a9ab0",
                 outline: "none",
+                minHeight: "44px",
               }}
             />
             <button
-              onClick={() => {
-                navigator.clipboard.writeText(shareUrl)
-              }}
+              onClick={() => navigator.clipboard.writeText(shareUrl)}
+              aria-label="Copy share URL to clipboard"
               className="mono text-xs px-4 py-2 flex-shrink-0"
               style={{
-                border: "1px solid #4a4a6f",
-                color: "#7a7a9f",
+                border: "1px solid #6a6a8f",
+                color: "#9a9ab0",
                 background: "transparent",
+                minHeight: "44px",
               }}
             >
               COPY
             </button>
           </div>
-          <p className="mono text-xs" style={{ color: "#1c1c1f" }}>
+          <p className="mono text-xs" style={{ color: "#6a6a8f" }}>
             Identifying details are not included in shared links
           </p>
         </div>
+
+        {/* Run again */}
         <div className="text-center pt-4">
           <Link href="/audit">
             <button
+              aria-label="Run another audit"
               className="mono text-xs px-6 py-3"
               style={{
-                border: "1px solid #4a4a6f",
-                color: "#7a7a9f",
+                border: "1px solid #6a6a8f",
+                color: "#9a9ab0",
                 background: "transparent",
+                minHeight: "44px",
               }}
             >
               ← RUN ANOTHER AUDIT
@@ -682,7 +671,5 @@ export default function ResultsPage() {
 
       </div>
     </main>
-
   )
 }
-        

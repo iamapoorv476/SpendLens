@@ -6,7 +6,7 @@ export default function HomePage() {
 
       {/* Nav */}
       <nav
-        style={{ borderBottom: "1px solid  #2a2a3f" }}
+        style={{ borderBottom: "1px solid #2a2a3f" }}
         className="px-8 py-4 flex items-center justify-between"
       >
         <div className="flex items-center gap-3">
@@ -25,18 +25,19 @@ export default function HomePage() {
           </span>
         </div>
         <div className="flex items-center gap-6">
-          <span className="mono text-xs text-[#3a3a3f]">
+          <span className="mono text-xs" style={{ color: "#7a7a9f" }}>
             pricing verified May 2026
           </span>
           <Link href="/audit">
             <button
+              aria-label="Start free audit"
               className="mono text-xs px-4 py-2 transition-all"
               style={{
-                border: "1px solid #4a4a5f",
-                color: "#888",
+                border: "1px solid #6a6a8f",
+                color: "#9a9ab0",
                 background: "transparent",
+                minHeight: "44px",
               }}
-              
             >
               START AUDIT →
             </button>
@@ -50,40 +51,30 @@ export default function HomePage() {
 
           {/* Left */}
           <div>
-            {/* Eyebrow */}
             <div
               className="inline-flex items-center gap-2 mb-8 px-3 py-1.5"
-              style={{ border: "1px solid  #2a2a3f", background: "#111114" }}
+              style={{ border: "1px solid #2a2a3f", background: "#111114" }}
             >
-              <span
-                className="w-1.5 h-1.5 rounded-full"
-                style={{ background: "#00ff88" }}
-              />
-              <span className="mono text-xs tracking-widest"
-                style={{ color: "#7a7a8f" }}>
+              <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#00ff88" }} />
+              <span className="mono text-xs tracking-widest" style={{ color: "#9a9ab0" }}>
                 DETERMINISTIC AUDIT ENGINE
               </span>
             </div>
 
-            {/* Headline */}
             <h1
               className="text-4xl md:text-5xl font-bold leading-[1.1] tracking-tight mb-5"
               style={{ color: "#f0f0f2" }}
             >
               Your AI tool spend,
               <br />
-              <span style={{
-                color: "#00ff88",
-                textShadow: "0 0 30px rgba(0,255,136,0.2)"
-              }}>
+              <span style={{ color: "#00ff88", textShadow: "0 0 30px rgba(0,255,136,0.2)" }}>
                 audited honestly.
               </span>
             </h1>
 
-            {/* Subheadline */}
             <p
               className="text-base leading-relaxed mb-8 max-w-md"
-              style={{ color: "#8a8a9f" }}
+              style={{ color: "#9a9ab0" }}
             >
               SpendLens evaluates your AI subscriptions against current
               vendor pricing, your team size, usage intensity, and workflow
@@ -91,7 +82,6 @@ export default function HomePage() {
               actually agree with.
             </p>
 
-            {/* Trust signals inline */}
             <div className="space-y-2 mb-10">
               {[
                 "Compliance requirements never overridden",
@@ -99,31 +89,28 @@ export default function HomePage() {
                 "Every number traces to an official pricing page",
               ].map((signal) => (
                 <div key={signal} className="flex items-center gap-3">
-                  <span style={{ color: "#00ff88" }} className="text-xs">
-                    ✓
-                  </span>
-                  <span className="text-sm" style={{ color: "#7a7a8f" }}>
-                    {signal}
-                  </span>
+                  <span style={{ color: "#00ff88" }} className="text-xs">✓</span>
+                  <span className="text-sm" style={{ color: "#9a9ab0" }}>{signal}</span>
                 </div>
               ))}
             </div>
 
-            {/* CTA */}
             <div className="flex items-center gap-5">
               <Link href="/audit">
                 <button
-                  className="mono text-xs px-6 py-3 font-medium tracking-widest transition-all"
+                  aria-label="Audit my AI tool stack"
+                  className="mono text-xs px-6 font-medium tracking-widest transition-all"
                   style={{
                     background: "#00ff88",
                     color: "#0c0c0e",
                     border: "none",
+                    minHeight: "44px",
                   }}
                 >
                   AUDIT MY STACK →
                 </button>
               </Link>
-              <span className="mono text-xs" style={{ color: "#4a4a5f" }}>
+              <span className="mono text-xs" style={{ color: "#6a6a8f" }}>
                 no login · no email upfront
               </span>
             </div>
@@ -132,32 +119,21 @@ export default function HomePage() {
           {/* Right — audit preview */}
           <div className="space-y-2 pt-2">
             <div className="flex items-center justify-between mb-4">
-              <span className="mono text-xs tracking-widest"
-                style={{ color: "#4a4a5f" }}>
+              <span className="mono text-xs tracking-widest" style={{ color: "#7a7a9f" }}>
                 EXAMPLE AUDIT OUTPUT
               </span>
-              <span className="mono text-xs" style={{ color: "#4a4a5f" }}>
+              <span className="mono text-xs" style={{ color: "#7a7a9f" }}>
                 3-person team · coding
               </span>
             </div>
 
-            {/* Recommendation card 1 */}
-            <div
-              className="p-4 space-y-3"
-              style={{
-                background: "#0f0f12",
-                border: "1px solid #2a2a3f",
-              }}
-            >
+            {/* Card 1 */}
+            <div className="p-4 space-y-3" style={{ background: "#0f0f12", border: "1px solid #2a2a3f" }}>
               <div className="flex items-start justify-between gap-4">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span
-                      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                      style={{ background: "#ff4444" }}
-                    />
-                    <span className="text-sm font-medium"
-                      style={{ color: "#d0d0d4" }}>
+                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#ff4444" }} />
+                    <span className="text-sm font-medium" style={{ color: "#d0d0d4" }}>
                       GitHub Copilot
                     </span>
                     <span
@@ -175,51 +151,29 @@ export default function HomePage() {
                     Consider consolidating on Cursor
                   </p>
                 </div>
-                <span
-                  className="mono text-sm font-medium flex-shrink-0"
-                  style={{ color: "#00ff88" }}
-                >
+                <span className="mono text-sm font-medium flex-shrink-0" style={{ color: "#00ff88" }}>
                   −$30/mo
                 </span>
               </div>
-
-              <p className="text-xs leading-relaxed"
-                style={{ color: "#6a6a7f" }}>
+              <p className="text-xs leading-relaxed" style={{ color: "#9a9ab0" }}>
                 Cursor and GitHub Copilot overlap in ~60% of use cases.
                 Copilot retains value for PR reviews and CI pipeline
-                contexts — if those workflows exist, this saving does
-                not apply.
+                contexts — if those workflows exist, this saving does not apply.
               </p>
-
-              <div className="flex items-center gap-2 pt-1"
-                style={{ borderTop: "1px solid #1a1a1d" }}>
-                <span className="mono text-xs" style={{ color: "#4a4a5f" }}>
-                  overlap detection
-                </span>
+              <div className="flex items-center gap-2 pt-1" style={{ borderTop: "1px solid #1a1a1d" }}>
+                <span className="mono text-xs" style={{ color: "#7a7a9f" }}>overlap detection</span>
                 <span style={{ color: "#2a2a3f" }}>·</span>
-                <span className="mono text-xs" style={{ color: "#4a4a5f" }}>
-                  switching friction: medium
-                </span>
+                <span className="mono text-xs" style={{ color: "#7a7a9f" }}>switching friction: medium</span>
               </div>
             </div>
 
-            {/* Recommendation card 2 */}
-            <div
-              className="p-4 space-y-3"
-              style={{
-                background: "#0f0f12",
-                border: "1px solid #2a2a3f",
-              }}
-            >
+            {/* Card 2 */}
+            <div className="p-4 space-y-3" style={{ background: "#0f0f12", border: "1px solid #2a2a3f" }}>
               <div className="flex items-start justify-between gap-4">
                 <div className="space-y-1">
                   <div className="flex items-center gap-2">
-                    <span
-                      className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                      style={{ background: "#ffaa00" }}
-                    />
-                    <span className="text-sm font-medium"
-                      style={{ color: "#d0d0d4" }}>
+                    <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: "#ffaa00" }} />
+                    <span className="text-sm font-medium" style={{ color: "#d0d0d4" }}>
                       Cursor Teams
                     </span>
                     <span
@@ -237,63 +191,43 @@ export default function HomePage() {
                     Switch to individual Pro plans
                   </p>
                 </div>
-                <span
-                  className="mono text-sm font-medium flex-shrink-0"
-                  style={{ color: "#00ff88" }}
-                >
+                <span className="mono text-sm font-medium flex-shrink-0" style={{ color: "#00ff88" }}>
                   −$40/mo
                 </span>
               </div>
-
-              <p className="text-xs leading-relaxed"
-                style={{ color: "#6a6a7f" }}>
+              <p className="text-xs leading-relaxed" style={{ color: "#9a9ab0" }}>
                 Teams plan is structured for 5+ users. At 3 seats,
                 individual Pro at $20/seat saves $40/mo with identical
                 capability — unless SSO or centralised billing are
                 contractually required.
               </p>
-
-              <div className="flex items-center gap-2 pt-1"
-                style={{ borderTop: "1px solid #1a1a1d" }}>
-                <span className="mono text-xs" style={{ color: "#4a4a5f" }}>
-                  seat waste
-                </span>
+              <div className="flex items-center gap-2 pt-1" style={{ borderTop: "1px solid #1a1a1d" }}>
+                <span className="mono text-xs" style={{ color: "#7a7a9f" }}>seat waste</span>
                 <span style={{ color: "#2a2a3f" }}>·</span>
-                <span className="mono text-xs" style={{ color: "#4a4a5f" }}>
-                  math-based · no assumptions
-                </span>
+                <span className="mono text-xs" style={{ color: "#7a7a9f" }}>math-based · no assumptions</span>
               </div>
             </div>
 
             {/* Total */}
             <div
               className="flex items-center justify-between px-4 py-3"
-              style={{
-                background: "#0f0f12",
-                border: "1px solid #2a2a3f",
-              }}
+              style={{ background: "#0f0f12", border: "1px solid #2a2a3f" }}
             >
-              <span className="mono text-xs" style={{ color: "#6a6a7f" }}>
+              <span className="mono text-xs" style={{ color: "#9a9ab0" }}>
                 potential monthly saving
               </span>
               <div className="flex items-baseline gap-2">
                 <span
                   className="mono text-lg font-medium"
-                  style={{
-                    color: "#00ff88",
-                    textShadow: "0 0 12px rgba(0,255,136,0.3)",
-                  }}
+                  style={{ color: "#00ff88", textShadow: "0 0 12px rgba(0,255,136,0.3)" }}
                 >
                   $70/mo
                 </span>
-                <span className="mono text-xs" style={{ color: "#4a4a5f" }}>
-                  $840/yr
-                </span>
+                <span className="mono text-xs" style={{ color: "#7a7a9f" }}>$840/yr</span>
               </div>
             </div>
 
-            <p className="mono text-xs text-right pt-1"
-              style={{ color: "#2a2a3f" }}>
+            <p className="mono text-xs text-right pt-1" style={{ color: "#4a4a6f" }}>
               actual output format · your numbers will differ
             </p>
           </div>
@@ -301,9 +235,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Engineering facts strip — replaces fake stats */}
-      <section style={{ borderTop: "1px solid #2a2a3f", borderBottom: "1px solid #2a2a3f" }}
-        className="py-5 px-8">
+      {/* Engineering facts strip */}
+      <section
+        style={{ borderTop: "1px solid #2a2a3f", borderBottom: "1px solid #2a2a3f" }}
+        className="py-5 px-8"
+      >
         <div className="max-w-6xl mx-auto flex flex-wrap gap-8 items-center justify-between">
           {[
             { label: "tools with verified pricing", value: "8" },
@@ -312,11 +248,10 @@ export default function HomePage() {
             { label: "pricing last verified", value: "May 2026" },
           ].map((stat) => (
             <div key={stat.label} className="flex items-baseline gap-3">
-              <span className="mono text-sm font-medium"
-                style={{ color: "#00ff88" }}>
+              <span className="mono text-sm font-medium" style={{ color: "#00ff88" }}>
                 {stat.value}
               </span>
-              <span className="mono text-xs" style={{ color: "#4a4a5f" }}>
+              <span className="mono text-xs" style={{ color: "#7a7a9f" }}>
                 {stat.label}
               </span>
             </div>
@@ -326,12 +261,10 @@ export default function HomePage() {
 
       {/* How it works */}
       <section className="max-w-6xl mx-auto px-8 py-20">
-        <p className="mono text-xs tracking-widest mb-12"
-          style={{ color: "#4a4a5f" }}>
+        <p className="mono text-xs tracking-widest mb-12" style={{ color: "#7a7a9f" }}>
           HOW THE AUDIT WORKS
         </p>
-        <div className="grid md:grid-cols-3 gap-px"
-          style={{ background: "#2a2a3f" }}>
+        <div className="grid md:grid-cols-3 gap-px" style={{ background: "#2a2a3f" }}>
           {[
             {
               step: "01",
@@ -349,18 +282,14 @@ export default function HomePage() {
               desc: "Every suggestion includes a one-sentence reason and a confidence level. No manufactured savings. No aggressive upselling.",
             },
           ].map((item) => (
-            <div key={item.step} className="p-8"
-              style={{ background: "#0c0c0e" }}>
-              <span className="mono text-3xl font-bold block mb-6"
-                style={{ color: "#2a2a3f" }}>
+            <div key={item.step} className="p-8" style={{ background: "#0c0c0e" }}>
+              <span className="mono text-3xl font-bold block mb-6" style={{ color: "#2a2a3f" }}>
                 {item.step}
               </span>
-              <h3 className="text-sm font-semibold mb-3"
-                style={{ color: "#d0d0d4" }}>
+              <h3 className="text-sm font-semibold mb-3" style={{ color: "#d0d0d4" }}>
                 {item.title}
               </h3>
-              <p className="text-sm leading-relaxed"
-                style={{ color: "#6a6a7f" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "#9a9ab0" }}>
                 {item.desc}
               </p>
             </div>
@@ -370,61 +299,48 @@ export default function HomePage() {
 
       {/* Tools */}
       <section className="max-w-6xl mx-auto px-8 pb-20">
-        <p className="mono text-xs tracking-widest mb-6"
-          style={{ color: "#4a4a5f" }}>
+        <p className="mono text-xs tracking-widest mb-6" style={{ color: "#7a7a9f" }}>
           TOOLS AUDITED
         </p>
         <div className="flex flex-wrap gap-2">
           {[
-            "Cursor",
-            "GitHub Copilot",
-            "Claude",
-            "ChatGPT",
-            "Anthropic API",
-            "OpenAI API",
-            "Gemini",
-            "Windsurf",
+            "Cursor", "GitHub Copilot", "Claude", "ChatGPT",
+            "Anthropic API", "OpenAI API", "Gemini", "Windsurf",
           ].map((tool) => (
             <span
               key={tool}
               className="mono text-xs px-3 py-1.5"
-              style={{
-                border: "1px solid #2a2a3f",
-                color: "#6a6a7f",
-                background: "#0f0f12",
-              }}
+              style={{ border: "1px solid #2a2a3f", color: "#9a9ab0", background: "#0f0f12" }}
             >
               {tool}
             </span>
           ))}
         </div>
-        <p className="mono text-xs mt-4" style={{ color: "#2a2a3f" }}>
+        <p className="mono text-xs mt-4" style={{ color: "#4a4a6f" }}>
           pricing verified against official vendor pages · May 2026
         </p>
       </section>
 
-      {/* Bottom CTA — minimal, no repetition */}
-      <section
-        style={{ borderTop: "1px solid #2a2a3f" }}
-        className="px-8 py-16"
-      >
+      {/* Bottom CTA */}
+      <section style={{ borderTop: "1px solid #2a2a3f" }} className="px-8 py-16">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div>
-            <h2 className="text-2xl font-bold mb-2"
-              style={{ color: "#f0f0f2" }}>
+            <h2 className="text-2xl font-bold mb-2" style={{ color: "#f0f0f2" }}>
               Run your audit.
             </h2>
-            <p className="text-sm" style={{ color: "#6a6a7f" }}>
+            <p className="text-sm" style={{ color: "#9a9ab0" }}>
               Free. No account. Email captured after you see results.
             </p>
           </div>
           <Link href="/audit">
             <button
-              className="mono text-xs px-6 py-3 font-medium tracking-widest"
+              aria-label="Start free audit"
+              className="mono text-xs px-6 font-medium tracking-widest"
               style={{
                 background: "#00ff88",
                 color: "#0c0c0e",
                 border: "none",
+                minHeight: "44px",
               }}
             >
               START FREE AUDIT →
@@ -434,18 +350,16 @@ export default function HomePage() {
       </section>
 
       {/* Footer */}
-      <footer
-        style={{ borderTop: "1px solid #2a2a3f" }}
-        className="px-8 py-5"
-      >
+      <footer style={{ borderTop: "1px solid #2a2a3f" }} className="px-8 py-5">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <span className="mono text-xs" style={{ color: "#2a2a3f" }}>
+          <span className="mono text-xs" style={{ color: "#6a6a8f" }}>
             SPENDLENS · built for Credex
           </span>
           <a
             href="https://credex.rocks"
+            aria-label="Visit Credex website"
             className="mono text-xs transition-colors"
-            style={{ color: "#2a2a3f" }}
+            style={{ color: "#6a6a8f" }}
             target="_blank"
             rel="noopener noreferrer"
           >
